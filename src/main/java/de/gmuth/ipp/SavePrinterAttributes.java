@@ -33,7 +33,7 @@ public class SavePrinterAttributes {
                 logger.info("> Looking for mdns services of type _ipp._tcp.local.");
                 Logging.flush();
                 JmDNS jmDns = JmDNS.create();
-                for (ServiceInfo serviceInfo : jmDns.list("_ipp._tcp.local.", 5000)) {
+                for (ServiceInfo serviceInfo : jmDns.list("_ipp._tcp.local.", 10000)) {
                     savePrinterAttributes(toUri(serviceInfo));
                 }
                 jmDns.close();
