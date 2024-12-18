@@ -29,7 +29,7 @@ public class WriteMarkdownFile {
 
     void run(String[] args) throws Exception {
         File markdownFile = new File("README.md");
-        logger.info("Write markdown file: " + markdownFile);
+        logger.info(() -> "Write markdown file: " + markdownFile);
         OutputStream outputStream = new FileOutputStream(markdownFile);
         copyFile("introduction.md", outputStream);
         writePrinterTable(outputStream);
@@ -41,7 +41,7 @@ public class WriteMarkdownFile {
         Files.copy(Path.of(filename), outputStream);
     }
 
-    void writePrinterTable(OutputStream outputStream) throws Exception {
+    void writePrinterTable(OutputStream outputStream) {
         PrinterDescriptionRepository printerDescriptionRepository = new PrinterDescriptionRepository();
         List<PrinterDescription> printerDescriptions = printerDescriptionRepository.getPrinterDescriptions();
         logger.info("Writing " + printerDescriptions.size() + " printer descriptions:");

@@ -14,20 +14,23 @@ import java.util.stream.Collectors;
 
 public class MarkdownTable extends ArrayList<List<String>> {
 
-    protected Map<Integer, Integer> maxWidths = new HashMap<>();
+    private Map<Integer, Integer> maxWidths = new HashMap<>();
 
     @Override
     public boolean add(List<String> columns) {
         for (int index = 0; index < columns.size(); index++) {
             int width = columns.get(index).length();
-            Integer maxWidth = this.maxWidths.get(index);
-            if (maxWidth == null || maxWidth < width) this.maxWidths.put(index, width);
+            Integer maxWidth = maxWidths.get(index);
+            if (maxWidth == null || maxWidth < width) maxWidths.put(index, width);
         }
         return super.add(columns);
     }
 
     void addTitleSeparator() {
-        add(1, maxWidths.values().stream().map("-"::repeat).toList());
+        add(1, maxWidths.values().stream()
+                .map("-"::repeat)
+                .collect(Collectors.toList())
+        );
     }
 
     void writeMarkdown(OutputStream outputStream) {
@@ -35,7 +38,7 @@ public class MarkdownTable extends ArrayList<List<String>> {
         String formatString = maxWidths.values().stream()
                 .map(length -> "%-" + length + "s")
                 .collect(Collectors.joining("|", "|", "|"));
-        forEach(row -> printWriter.println(formatString.formatted(row.toArray())));
+        forEach(row -> printWriter.println(formatString.format(row.get(0), row.get(1), row.get(2), row.get(3))));
         printWriter.flush();
     }
 
