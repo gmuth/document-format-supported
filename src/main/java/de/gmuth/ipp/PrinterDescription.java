@@ -58,7 +58,7 @@ public class PrinterDescription {
                 .entrySet().stream()
                 .map(entry -> Map.entry(
                                 entry.getKey(),
-                                String.join(", ", entry.getValue().stream().map(mimeType -> mimeType[1]).sorted().toList())
+                                String.join(", ", entry.getValue().stream().map(mimeType -> mimeType[1]).sorted().collect(Collectors.toList()))
                         )
                 )
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));

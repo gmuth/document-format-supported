@@ -4,16 +4,22 @@ package de.gmuth.ipp;
  * Copyright (c) 2024 Gerhard Muth
  */
 
+import de.gmuth.log.Logging;
+
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
+
+import static java.lang.String.format;
 
 public class MarkdownTable extends ArrayList<List<String>> {
 
+    static Logger logger = Logging.getLogger(MarkdownTable.class);
     private Map<Integer, Integer> maxWidths = new HashMap<>();
 
     @Override
@@ -38,7 +44,7 @@ public class MarkdownTable extends ArrayList<List<String>> {
         String formatString = maxWidths.values().stream()
                 .map(length -> "%-" + length + "s")
                 .collect(Collectors.joining("|", "|", "|"));
-        forEach(row -> printWriter.println(formatString.format(row.get(0), row.get(1), row.get(2), row.get(3))));
+        forEach(row -> printWriter.println(format(formatString, row.get(0), row.get(1), row.get(2), row.get(3))));
         printWriter.flush();
     }
 

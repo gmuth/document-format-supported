@@ -8,6 +8,7 @@ import de.gmuth.log.Logging;
 
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class PrinterDescriptionRepository {
 
@@ -19,7 +20,7 @@ public class PrinterDescriptionRepository {
         return printerAttributesRepository
                 .getRawPrinterAttributesResponses().stream()
                 .map(PrinterDescription::fromRawIppResponse)
-                .toList();
+                .collect(Collectors.toList());
     }
 
 }
