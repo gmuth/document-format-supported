@@ -10,6 +10,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <exec.mainClass>de.gmuth.ipp.WriteMarkdownFile</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>
@@ -17,9 +18,20 @@
             <artifactId>ipp-client</artifactId>
             <version>3.2</version>
         </dependency>
+        <dependency>
+            <artifactId>jmdns</artifactId>
+            <groupId>org.jmdns</groupId>
+            <version>3.6.0</version>
+        </dependency>
+        <!-- slf4j is used by jmdns -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>2.0.13</version>
+        </dependency>
     </dependencies>
     <build>
-        <defaultGoal>compile exec:java</defaultGoal>
+        <defaultGoal>package exec:java</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -30,13 +42,67 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
+            <!-- exec:java -Dexec.mainClass=de.gmuth.ipp.SavePrinterAttributes -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
-                    <mainClass>de.gmuth.ipp.WriteMarkdownFile</mainClass>
+                    <mainClass>${exec.mainClass}</mainClass>
                 </configuration>
+            </plugin>
+            <!-- create fat jar printer-attributes.jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <finalName>printer-attributes</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <archive>
+                        <manifest>
+                            <mainClass>de.gmuth.ipp.SavePrinterAttributes</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- copy printer-attributes-jar to project directory -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.basedir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}</directory>
+                                    <includes>
+                                        <include>printer-attributes.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
