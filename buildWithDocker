@@ -1,4 +1,4 @@
 # use mvn standard settings and cache
 mkdir -p "$HOME"/.m2
-docker run -it --rm -v "$HOME"/.m2:/root/.m2 -v "$PWD":/work -w /work adoptopenjdk:11 ./mvnw clean package
+docker run -it --rm -v "$HOME"/.m2:/root/.m2 -v $(pwd):/work -w /work adoptopenjdk:11 ./mvnw clean package
 ls -l target
