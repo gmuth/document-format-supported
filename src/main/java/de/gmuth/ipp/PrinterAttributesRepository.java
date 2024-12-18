@@ -18,7 +18,9 @@ public class PrinterAttributesRepository {
 
     static Logger logger = Logging.getLogger(PrinterAttributesRepository.class);
 
-    static File printersdirectory = new File("printers");
+    static File printersdirectory = new File("printers") {{
+        if (!exists()) mkdirs();
+    }};
 
     List<byte[]> getRawPrinterAttributesResponses() {
         return Arrays.stream(printersdirectory.list())
@@ -30,8 +32,7 @@ public class PrinterAttributesRepository {
                         logger.info("Reading " + file);
                         return Files.readAllBytes(file.toPath());
                     } catch (IOException ioException) {
-                        logger.severe("Failed to read " + file);
-                        throw new RuntimeException(ioException);
+                        throw new RuntimeException("Failed to read " + file, ioException);
                     }
                 })
                 .collect(Collectors.toList());
