@@ -27,13 +27,13 @@ public class SavePrinterAttributes {
         try {
             if (args.length > 0) {
                 List<String> argList = Arrays.asList(args);
-                logger.info("> Process printerUri arguments: " + String.join(",", argList));
+                logger.info("> Process printerUri arguments: " + String.join(", ", argList));
                 savePrinterAttributes(argList);
             } else {
                 logger.info("> Looking for mdns services of type _ipp._tcp.local.");
                 Logging.flush();
                 JmDNS jmDns = JmDNS.create();
-                for (ServiceInfo serviceInfo : jmDns.list("_ipp._tcp.local.", 3000L)) {
+                for (ServiceInfo serviceInfo : jmDns.list("_ipp._tcp.local.", 5000)) {
                     savePrinterAttributes(toUri(serviceInfo));
                 }
                 jmDns.close();
@@ -41,6 +41,7 @@ public class SavePrinterAttributes {
         } catch (Throwable throwable) {
             logger.log(Level.SEVERE, "main failed", throwable);
         }
+        Logging.flush();
     }
 
     static String toUri(ServiceInfo serviceInfo) {

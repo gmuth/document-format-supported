@@ -106,4 +106,32 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>native</id>
+            <build>
+                <plugins>
+                    <!-- graalvm native: mvnw -Pnative -->
+                    <plugin>
+                        <groupId>org.graalvm.buildtools</groupId>
+                        <artifactId>native-maven-plugin</artifactId>
+                        <version>0.10.4</version>
+                        <configuration>
+                            <buildArgs>
+                                <buildArg>--enable-url-protocols=http</buildArg>
+                            </buildArgs>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>native</id>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
