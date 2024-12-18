@@ -1,1 +1,1 @@
-./mvnw compile exec:java -Dexec.mainClass=de.gmuth.ipp.SavePrinterAttributes -Dexec.args="$*"
+java -cp printer-attributes.jar de.gmuth.ipp.SavePrinterAttributes $*
