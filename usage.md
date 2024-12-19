@@ -3,7 +3,7 @@
 
 ### Bonjour
 
-If your printer has Bonjour or AirPrint enabled run  `java -jar printer-attributes.jar` without arguments. The tool will use mdns to discovery your printers.
+If your printer has Bonjour or AirPrint enabled run  `java -jar printer-attributes.jar` without arguments. The tool will use mdns to discover your printers.
 
 ### Hostname or print-uri
 

@@ -1,6 +1,6 @@
 # document-format-supported
 
-This is a community effort to document supported formats of IPP printers.
+This is a community project to document supported formats of IPP printers.
 Please contribute to this repository by sharing your printers attributes.
 
 ## Formats reported via IPP
@@ -13,7 +13,7 @@ Please contribute to this repository by sharing your printers attributes.
 
 ### Bonjour
 
-If your printer has Bonjour or AirPrint enabled run  `java -jar printer-attributes.jar` without arguments. The tool will use mdns to discovery your printers.
+If your printer has Bonjour or AirPrint enabled run  `java -jar printer-attributes.jar` without arguments. The tool will use mdns to discover your printers.
 
 ### Hostname or print-uri
 
