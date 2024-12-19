@@ -1,4 +1,4 @@
-package de.gmuth.ipp;
+package de.gmuth.md;
 
 /**
  * Copyright (c) 2024 Gerhard Muth
@@ -32,14 +32,14 @@ public class MarkdownTable extends ArrayList<List<String>> {
         return super.add(columns);
     }
 
-    void addTitleSeparator() {
+    public void addTitleSeparator() {
         add(1, maxWidths.values().stream()
                 .map("-"::repeat)
                 .collect(Collectors.toList())
         );
     }
 
-    void writeMarkdown(OutputStream outputStream) {
+    public void writeMarkdown(OutputStream outputStream) {
         PrintWriter printWriter = new PrintWriter(outputStream);
         String formatString = maxWidths.values().stream()
                 .map(width -> "%-" + width + "s")

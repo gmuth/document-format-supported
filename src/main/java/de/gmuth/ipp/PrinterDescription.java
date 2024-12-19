@@ -7,10 +7,12 @@ package de.gmuth.ipp;
 import de.gmuth.ipp.core.IppAttributesGroup;
 import de.gmuth.ipp.core.IppResponse;
 import de.gmuth.ipp.core.IppString;
+import de.gmuth.log.Logging;
 
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class PrinterDescription {
@@ -31,17 +33,19 @@ public class PrinterDescription {
         this.textTypes = textTypes;
     }
 
-    static PrinterDescription fromRawIppResponse(byte[] rawIppBytes) {
-        IppResponse response = new IppResponse();
-        response.decode(rawIppBytes);
-        return fromIppResponse(response);
-    }
+    static Logger logger = Logging.getLogger(PrinterDescription.class);
 
     static PrinterDescription fromIppResponse(IppResponse getPrinterAttributesResponse) {
         IppAttributesGroup attributes = getPrinterAttributesResponse.getPrinterGroup();
         IppString makeAndModel = attributes.getValue("printer-make-and-model");
         List<String> documentFormatSupported = attributes.getValues("document-format-supported");
         Map<String, String> documentFormatSupportedMap = getDocumentFormatSupportedMap(documentFormatSupported);
+        if (documentFormatSupportedMap.keySet().size() > 3) {
+            logger.warning(String.format(
+                    "Found more main types than expected: %s -> %s",
+                    makeAndModel, String.join(", ", documentFormatSupportedMap.keySet())
+            ));
+        }
         return new PrinterDescription(
                 makeAndModel.getText(),
                 documentFormatSupportedMap.get("application"),

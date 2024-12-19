@@ -1,10 +1,7 @@
 
-### How to contribute your printer attributes
+### Contribute your printer attributes
 
-1. Fork this repository.
-2. Run script `./save_printer_attributes ipp://yourprinter` (requires Java)
-
-   If no arguments are provided mdns is used for printer discovery.
-3. Optionally `./generate_readme` to update this README.md. 
-4. Add, commit and push new .bin file
-5. Create a pull request on github.
+To share your saved printer attributes
+- create an issue and attach the `.res` file
+- or send a personal message via email attaching the `.res` file
+- or fork this repo, add the `.res` file and create a pull request.
