@@ -42,7 +42,7 @@ public class MarkdownTable extends ArrayList<List<String>> {
     void writeMarkdown(OutputStream outputStream) {
         PrintWriter printWriter = new PrintWriter(outputStream);
         String formatString = maxWidths.values().stream()
-                .map(length -> "%-" + length + "s")
+                .map(width -> "%-" + width + "s")
                 .collect(Collectors.joining("|", "|", "|"));
         forEach(row -> printWriter.println(format(formatString, row.get(0), row.get(1), row.get(2), row.get(3))));
         printWriter.flush();
