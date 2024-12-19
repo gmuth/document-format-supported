@@ -16,7 +16,6 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 public class GenerateReadme {
 
@@ -24,8 +23,9 @@ public class GenerateReadme {
     static private IppMessageRepository ippMessageRepository;
 
     void generateReadme() throws Exception {
+        ippMessageRepository = IppMessageRepository.getInstance();
         File mdFile = new File("README.md");
-        logger.info(() -> "Write markdown file: " + mdFile);
+        logger.info(() -> "> Generate markdown file: " + mdFile);
         OutputStream outputStream = new FileOutputStream(mdFile);
         try (outputStream) {
             copyFile("introduction.md", outputStream);
@@ -56,7 +56,7 @@ public class GenerateReadme {
                 .sorted(Comparator.comparing(it -> it.makeAndModel))
                 .forEach(it -> {
                     PrinterDescription replaced = printerDescriptionMap.put(it.makeAndModel, it);
-                    if(replaced != null) logger.warning("Found duplicate key: " + replaced.makeAndModel);
+                    if (replaced != null) logger.warning("Found duplicate key: " + replaced.makeAndModel);
                 });
         return new ArrayList<>(printerDescriptionMap.values());
     }
@@ -68,7 +68,6 @@ public class GenerateReadme {
 
     public static void main(String[] args) {
         Logging.configure(Level.INFO);
-        ippMessageRepository = IppMessageRepository.getInstance();
         try {
             new GenerateReadme().generateReadme();
         } catch (Throwable throwable) {

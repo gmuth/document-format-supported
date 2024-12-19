@@ -1,0 +1,1 @@
+./mvnw -Pnative clean package && cp target/printer-attributes printer-attributes-arm64

@@ -61,7 +61,7 @@ printer-attributes-tag
   uri-security-supported (1setOf keyword) = none
   uri-authentication-supported (1setOf keyword) = none
   printer-name (nameWithoutLanguage) = Xerox B210 Printer
-  printer-location (textWithoutLanguage) = Office
+  printer-location (textWithoutLanguage) = Greenwich
   printer-info (textWithoutLanguage) = Xerox B210
   printer-more-info (uri) = http://xero.local.:631/airprintRedirect.dhtml
   printer-driver-installer (uri) = http://www.support.xerox.com/support/
@@ -83,7 +83,7 @@ printer-attributes-tag
   printer-message-from-operator (textWithoutLanguage) = operator-message
   color-supported (boolean) = false
   pdl-override-supported (keyword) = attempted
-  printer-up-time (integer) = 2556839 (PT710H13M59S)
+  printer-up-time (integer) = 0 (PT0S)
   multiple-operation-time-out (integer) = 300 (PT5M)
   compression-supported (1setOf keyword) = none
   job-k-octets-supported (rangeOfInteger) = 1-262144
@@ -110,7 +110,7 @@ printer-attributes-tag
   printer-device-id (textWithoutLanguage) = MFG:Xerox;CMD:PCL6,POSTSCRIPT,SPL,PCL5E,PDF,TIFF,JPEG,PRN,URF,IDS,EXT;MDL:B210 Printer;CLS:PRINTER;CID:XR_PCL6_Basic_A4_Mono;MODE:SPL3,R000105;
   printer-icons (1setOf uri) = http://xero.local.:631/images/printer-icon128.png,http://xero.local.:631/images/printer-icon512.png
   printer-dns-sd-name (nameWithoutLanguage) = Xerox B210
-  printer-geo-location (uri) = geo:48.96,9.13
+  printer-geo-location (uri) = geo:51.477,0
   printer-supply-info-uri (uri) = http://xero.local.:631/sws/index.html?link=/sws/app/Information/supplies/supplies.html
   printer-uuid (uri) = urn:uuid:16a65700-007c-1000-bb49-9c934eac2f55
   printer-alert (1setOf octetString) = none
@@ -126,6 +126,6 @@ printer-attributes-tag
   pclm-strip-height-preferred (1setOf integer) = 128
   pclm-strip-height-supported (integer) = 128
   mopria-certified (textWithoutLanguage) = 2.0
-  printer-config-change-time (integer) = 9 (1970-01-01T00:00:09Z)
+  printer-config-change-time (integer) = 0 (1970-01-01T00:00Z)
   printer-state-change-time (integer) = 0 (1970-01-01T00:00Z)
-  printer-state-change-date-time (dateTime) = 2021-01-15T00:00:00.0+00:00
+  printer-state-change-date-time (dateTime) = 2025-01-01T00:00:00.0+00:00

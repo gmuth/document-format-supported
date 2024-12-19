@@ -4,6 +4,7 @@ package de.gmuth.ipp;
  * Copyright (c) 2024 Gerhard Muth
  */
 
+import de.gmuth.ipp.core.IppAttributesGroup;
 import de.gmuth.ipp.core.IppResponse;
 import de.gmuth.ipp.core.IppString;
 import de.gmuth.log.Logging;
@@ -89,7 +90,19 @@ public class IppMessageRepository {
         try {
             IppMessageRepository ippMessageRepository = new IppMessageRepository();
             Stream<IppResponse> ippResponses = ippMessageRepository.findAllIppResponses();
-            long count = ippResponses.count();
+
+            logger.info("Rewrite ipp responses normalized.");
+            ippResponses.forEach(ippResponse -> {
+                try {
+                    IppAttributesGroup attributes = ippResponse.getPrinterGroup();
+                    SavePrinterAttributes.hardcodePrivateValues(attributes);
+                    SavePrinterAttributes.hardcodeVolatileValues(attributes);
+                    ippMessageRepository.saveIppResponse(ippResponse, true);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            //long count = ippResponses.count();
         } catch (Throwable throwable) {
             logger.log(Level.SEVERE, "main failed", throwable);
         }

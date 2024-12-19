@@ -10,7 +10,7 @@ printer-attributes-tag
   uri-security-supported (1setOf keyword) = none
   uri-authentication-supported (1setOf keyword) = requesting-user-name
   printer-name (nameWithoutLanguage) = ColorJet
-  printer-location (textWithoutLanguage) = Büro
+  printer-location (textWithoutLanguage) = Greenwich
   printer-more-info (uri) = http://www.hp.com
   printer-info (textWithoutLanguage) = HP LaserJet 100 colorMFP M175nw
   printer-make-and-model (textWithoutLanguage) = HP LaserJet 100 colorMFP M175nw
@@ -28,7 +28,7 @@ printer-attributes-tag
   printer-is-accepting-jobs (boolean) = true
   queued-job-count (integer) = 0
   pdl-override-supported (keyword) = attempted
-  printer-up-time (integer) = 839163 (PT233H6M3S)
+  printer-up-time (integer) = 0 (PT0S)
   compression-supported (1setOf keyword) = none
   color-supported (boolean) = true
   page-ranges-supported (boolean) = true
