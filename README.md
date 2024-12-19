@@ -27,7 +27,7 @@ If you don't have Java installed you can run `printer-attributes-arm64`
 
 You can generate this Readme file with a fresh list of document formats by running:
 
-`java -cp printer-attributes.jar de.gmuth.ipp.GenerateReadme`
+`java -cp printer-attributes.jar de.gmuth.md.GenerateReadme`
 
 or simply
 

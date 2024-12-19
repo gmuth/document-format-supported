@@ -1,11 +1,12 @@
-package de.gmuth.ipp;
+package de.gmuth.md;
 
 /**
  * Copyright (c) 2024 Gerhard Muth
  */
 
+import de.gmuth.ipp.IppMessageRepository;
+import de.gmuth.ipp.PrinterDescription;
 import de.gmuth.log.Logging;
-import de.gmuth.md.MarkdownTable;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,7 +23,7 @@ public class GenerateReadme {
     static Logger logger = Logging.getLogger(GenerateReadme.class);
     static private IppMessageRepository ippMessageRepository;
 
-    void generateReadme() throws Exception {
+    public void generateReadme() throws Exception {
         ippMessageRepository = IppMessageRepository.getInstance();
         File mdFile = new File("README.md");
         logger.info(() -> "> Generate markdown file: " + mdFile);
@@ -35,7 +36,7 @@ public class GenerateReadme {
         }
     }
 
-    void writePrinterTable(OutputStream outputStream) throws IOException {
+    protected void writePrinterTable(OutputStream outputStream) throws IOException {
         List<PrinterDescription> printerDescriptions = getPrinterDescriptions();
         logger.info("Writing " + printerDescriptions.size() + " printer descriptions:");
         MarkdownTable mdTable = new MarkdownTable();

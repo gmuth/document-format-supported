@@ -10,7 +10,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <exec.mainClass>de.gmuth.ipp.GenerateReadme</exec.mainClass>
+        <exec.mainClass>de.gmuth.md.GenerateReadme</exec.mainClass>
         <!-- make build reproducible -->
         <project.build.outputTimestamp>2025-01-01T00:00:00Z</project.build.outputTimestamp>
     </properties>

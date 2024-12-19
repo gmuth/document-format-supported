@@ -1,1 +1,1 @@
-java -cp printer-attributes.jar de.gmuth.ipp.GenerateReadme
+java -cp printer-attributes.jar de.gmuth.md.GenerateReadme

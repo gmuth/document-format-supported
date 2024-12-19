@@ -16,10 +16,10 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class PrinterDescription {
-    String makeAndModel;
-    String applicationTypes;
-    String imagesTypes;
-    String textTypes;
+    public String makeAndModel;
+    public String applicationTypes;
+    public String imagesTypes;
+    public String textTypes;
 
     public PrinterDescription(
             String makeAndModel,
@@ -35,7 +35,7 @@ public class PrinterDescription {
 
     static Logger logger = Logging.getLogger(PrinterDescription.class);
 
-    static PrinterDescription fromIppResponse(IppResponse getPrinterAttributesResponse) {
+    public static PrinterDescription fromIppResponse(IppResponse getPrinterAttributesResponse) {
         IppAttributesGroup attributes = getPrinterAttributesResponse.getPrinterGroup();
         IppString makeAndModel = attributes.getValue("printer-make-and-model");
         List<String> documentFormatSupported = attributes.getValues("document-format-supported");
@@ -72,7 +72,7 @@ public class PrinterDescription {
         return string == null ? "" : string;
     }
 
-    List<String> toList() {
+    public List<String> toList() {
         return List.of(
                 makeAndModel,
                 stringOrEmpty(applicationTypes),

@@ -7,6 +7,7 @@ package de.gmuth.ipp;
 import de.gmuth.ipp.client.IppClient;
 import de.gmuth.ipp.core.*;
 import de.gmuth.log.Logging;
+import de.gmuth.md.GenerateReadme;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
