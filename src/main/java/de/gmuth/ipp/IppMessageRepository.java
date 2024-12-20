@@ -4,7 +4,6 @@ package de.gmuth.ipp;
  * Copyright (c) 2024 Gerhard Muth
  */
 
-import de.gmuth.ipp.core.IppAttributesGroup;
 import de.gmuth.ipp.core.IppResponse;
 import de.gmuth.ipp.core.IppString;
 import de.gmuth.log.Logging;
@@ -20,7 +19,7 @@ import java.util.stream.Stream;
 
 public class IppMessageRepository {
 
-    static Path ippMessagePath = Path.of("printers");
+    private static Path ippMessagePath = Path.of("printers");
     private static IppMessageRepository instance;
     private static Logger logger = Logging.getLogger(IppMessageRepository.class);
 
@@ -96,14 +95,13 @@ public class IppMessageRepository {
             Stream<IppResponse> ippResponses = ippMessageRepository.findAllIppResponses();
 
             boolean normalize = true;
-            if(normalize) {
+            if (normalize) {
                 logger.info("Rewrite ipp responses normalized.");
                 ippResponses.forEach(ippResponse -> {
                     try {
                         boolean modified = new AttributesNormalizer(ippResponse).normalize();
-                        if(modified) ippMessageRepository.saveIppResponse(ippResponse, true);
+                        if (modified) ippMessageRepository.saveIppResponse(ippResponse, true);
                     } catch (IOException ioException) {
-                        //logger.warning(ioException.toString());
                         throw new RuntimeException(ioException);
                     }
                 });
