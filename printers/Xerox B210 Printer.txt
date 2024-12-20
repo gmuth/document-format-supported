@@ -1,4 +1,4 @@
-# File: Xerox B210 Printer.txt (decoded 9062 raw IPP bytes)
+# File: Xerox B210 Printer.txt (decoded 9096 raw IPP bytes)
 version 2.0
 successful-ok
 request-id 1
@@ -57,18 +57,18 @@ printer-attributes-tag
   output-bin-supported (1setOf keyword) = top
   margins-pre-applied-supported (boolean) = true
   output-mode-supported (1setOf keyword) = monochrome,auto,auto-monochrome
-  printer-uri-supported (1setOf uri) = ipp://xero.local.:631/ipp/print
+  printer-uri-supported (1setOf uri) = ipp://123.45.67.89:631/ipp/print
   uri-security-supported (1setOf keyword) = none
   uri-authentication-supported (1setOf keyword) = none
   printer-name (nameWithoutLanguage) = Xerox B210 Printer
   printer-location (textWithoutLanguage) = Greenwich
-  printer-info (textWithoutLanguage) = Xerox B210
-  printer-more-info (uri) = http://xero.local.:631/airprintRedirect.dhtml
+  printer-info (textWithoutLanguage) = Xerox B210 Printer
+  printer-more-info (uri) = http://123.45.67.89:631/airprintRedirect.dhtml
   printer-driver-installer (uri) = http://www.support.xerox.com/support/
   printer-make-and-model (textWithoutLanguage) = Xerox B210 Printer
   printer-state (enum) = idle
   printer-state-reasons (1setOf keyword) = none
-  printer-state-message (textWithoutLanguage) = Printer is ready to print.
+  printer-state-message (textWithoutLanguage) = Raising ball to top of the mast.
   ipp-versions-supported (1setOf keyword) = 1.0,1.1,2.0
   operations-supported (1setOf enum) = Print-Job,Validate-Job,Create-Job,Send-Document,Cancel-Job,Get-Job-Attributes,Get-Jobs,Get-Printer-Attributes,Identify-Printer,Resubmit-Job
   multiple-document-jobs-supported (boolean) = false
@@ -80,7 +80,7 @@ printer-attributes-tag
   document-format-supported (1setOf mimeMediaType) = application/octet-stream,application/PCL,application/postscript,application/vnd.hp-PCL,application/vnd.hp-PCLXL,application/x-QPDL,text/plain,image/urf,application/PCLm
   printer-is-accepting-jobs (boolean) = true
   queued-job-count (integer) = 0
-  printer-message-from-operator (textWithoutLanguage) = operator-message
+  printer-message-from-operator (textWithoutLanguage) = Abandoning solar time.
   color-supported (boolean) = false
   pdl-override-supported (keyword) = attempted
   printer-up-time (integer) = 0 (PT0S)
@@ -108,11 +108,11 @@ printer-attributes-tag
   marker-types (keyword) = toner
   media-col-ready (1setOf collection) = {media-size={x-dimension=21000 y-dimension=29700} media-type=stationery media-source=tray-1 media-top-margin=440 media-bottom-margin=440 media-left-margin=440 media-right-margin=440},{media-size={x-dimension=21000 y-dimension=29700} media-type=stationery media-source=auto media-top-margin=440 media-bottom-margin=440 media-left-margin=440 media-right-margin=440}
   printer-device-id (textWithoutLanguage) = MFG:Xerox;CMD:PCL6,POSTSCRIPT,SPL,PCL5E,PDF,TIFF,JPEG,PRN,URF,IDS,EXT;MDL:B210 Printer;CLS:PRINTER;CID:XR_PCL6_Basic_A4_Mono;MODE:SPL3,R000105;
-  printer-icons (1setOf uri) = http://xero.local.:631/images/printer-icon128.png,http://xero.local.:631/images/printer-icon512.png
-  printer-dns-sd-name (nameWithoutLanguage) = Xerox B210
+  printer-icons (1setOf uri) = http://123.45.67.89:631/images/printer-icon128.png,http://123.45.67.89:631/images/printer-icon512.png
+  printer-dns-sd-name (nameWithoutLanguage) = Xerox B210 Printer
   printer-geo-location (uri) = geo:51.477,0
-  printer-supply-info-uri (uri) = http://xero.local.:631/sws/index.html?link=/sws/app/Information/supplies/supplies.html
-  printer-uuid (uri) = urn:uuid:16a65700-007c-1000-bb49-9c934eac2f55
+  printer-supply-info-uri (uri) = http://123.45.67.89:631/sws/index.html?link=/sws/app/Information/supplies/supplies.html
+  printer-uuid (uri) = urn:uuid:01234567-89ab-cdef-0123-456789abcdef
   printer-alert (1setOf octetString) = none
   printer-alert-description (1setOf textWithoutLanguage) = none
   printer-firmware-name (1setOf nameWithoutLanguage) = System Firmware Version,IPP,URF
@@ -128,4 +128,4 @@ printer-attributes-tag
   mopria-certified (textWithoutLanguage) = 2.0
   printer-config-change-time (integer) = 0 (1970-01-01T00:00Z)
   printer-state-change-time (integer) = 0 (1970-01-01T00:00Z)
-  printer-state-change-date-time (dateTime) = 2025-01-01T00:00:00.0+00:00
+  printer-state-change-date-time (dateTime) = 1884-10-13T12:00:00.0+00:00

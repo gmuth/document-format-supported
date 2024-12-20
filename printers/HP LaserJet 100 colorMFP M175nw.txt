@@ -1,4 +1,4 @@
-# File: HP LaserJet 100 colorMFP M175nw.txt (decoded 5388 raw IPP bytes)
+# File: HP LaserJet 100 colorMFP M175nw.txt (decoded 5398 raw IPP bytes)
 version 2.0
 successful-ok
 request-id 1
@@ -6,16 +6,16 @@ operation-attributes-tag
   attributes-charset (charset) = utf-8
   attributes-natural-language (naturalLanguage) = en
 printer-attributes-tag
-  printer-uri-supported (1setOf uri) = ipp://ColorJet.local/ipp/printer
+  printer-uri-supported (1setOf uri) = ipp://123.45.67.89/ipp/printer
   uri-security-supported (1setOf keyword) = none
   uri-authentication-supported (1setOf keyword) = requesting-user-name
-  printer-name (nameWithoutLanguage) = ColorJet
+  printer-name (nameWithoutLanguage) = HP LaserJet 100 colorMFP M175nw
   printer-location (textWithoutLanguage) = Greenwich
   printer-more-info (uri) = http://www.hp.com
   printer-info (textWithoutLanguage) = HP LaserJet 100 colorMFP M175nw
   printer-make-and-model (textWithoutLanguage) = HP LaserJet 100 colorMFP M175nw
   printer-state (enum) = idle
-  printer-state-reasons (1setOf keyword) = toner-low-warning
+  printer-state-reasons (1setOf keyword) = none
   ipp-versions-supported (1setOf keyword) = 1.0,1.1,2.0
   operations-supported (1setOf enum) = Print-Job,Print-URI,Validate-Job,Create-Job,Send-URI,Cancel-Job,Get-Job-Attributes,Get-Jobs,Get-Printer-Attributes
   multiple-document-jobs-supported (boolean) = true
@@ -48,7 +48,7 @@ printer-attributes-tag
   pdf-k-octets-supported (rangeOfInteger) = 0-75000
   pdf-versions-supported (1setOf keyword) = adobe-1.2,adobe-1.3,adobe-1.4,adobe-1.5,adobe-1.6,adobe-1.7,iso-19005-1_2005,iso-32000-1_2008
   urf-supported (1setOf keyword) = CP99,W8,OB10,PQ3-4-5,ADOBERGB24,DEVRGB24,DEVW8,SRGB24,IS1-4,MT1-2-3-5-12,MT1-2-3-5-12,RS600
-  printer-uuid (uri) = urn:uuid:434e4339-4344-3130-5243-082e5fb9d080
+  printer-uuid (uri) = urn:uuid:01234567-89ab-cdef-0123-456789abcdef
   marker-names (1setOf nameWithoutLanguage) = Cyan Cartridge HP CE311A,Magenta Cartridge HP CE313A,Yellow Cartridge HP CE312A,Black Cartridge HP CE310A,Imaging Drum HP CE314A
   marker-colors (1setOf nameWithoutLanguage) = #00FFFF,#FF00FF,#FFFF00,#000000,none
   marker-types (1setOf keyword) = toner,toner,toner,toner,opc
@@ -74,6 +74,6 @@ printer-attributes-tag
   job-impressions-supported (rangeOfInteger) = 1-99999
   output-bin-supported (1setOf keyword) = face-down
   output-mode-supported (1setOf keyword) = color,monochrome,auto
-  printer-icons (1setOf uri) = http://ColorJet.local/ipp/images/printer.png
+  printer-icons (1setOf uri) = http://123.45.67.89/ipp/images/printer.png
   printer-device-id (textWithoutLanguage) = MFG:Hewlett-Packard;CMD:PJL,PML,PCLXL,URP,PCL,PDF,POSTSCRIPT;MDL:HP LaserJet 100 colorMFP M175nw;CLS:PRINTER;DES:Hewlett-Packard LaserJet 100 colorMFP M175nw;MEM:MEM=110MB;COMMENT:RES=600x8;LEDMDIS:USB#ff#04#01;
   landscape-orientation-requested-preferred (enum) = landscape
