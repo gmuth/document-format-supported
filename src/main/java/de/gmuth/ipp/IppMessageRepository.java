@@ -52,7 +52,7 @@ public class IppMessageRepository {
 
     public Stream<IppResponse> findAllIppResponses() throws IOException {
         return findAllIppResponsePaths(".res")
-                .map(IppMessageRepository::getIppResponse);
+                .map(it -> getIppResponse(it));
     }
 
     public void saveIppResponse(IppResponse ippResponse, Boolean saveText) throws IOException {
@@ -74,35 +74,42 @@ public class IppMessageRepository {
         return makeAndModel.getText().replaceAll("[/\\\\:*?\"<>|]", "_");
     }
 
-    static IppResponse getIppResponse(Path path) {
+    private IppResponse getIppResponse(Path path) {
         try {
             IppResponse ippResponse = new IppResponse();
             ippResponse.decode(Files.readAllBytes(path));
-            logger.info(String.format("Reading %-40s -> %s ", path.getFileName(), ippResponse));
+            logger.info(String.format("Reading %s -> %s ", path.getFileName(), ippResponse));
             return ippResponse;
         } catch (IOException ioException) {
             throw new UncheckedIOException("Failed to get ipp response from " + path, ioException);
         }
     }
 
+    public IppResponse getIppResponse(String makeAndModel) {
+        return getIppResponse(ippMessagePath.resolve(makeAndModel + ".res"));
+    }
+
     public static void main(String[] args) {
         Logging.configure(Level.INFO);
         try {
-            IppMessageRepository ippMessageRepository = new IppMessageRepository();
+            IppMessageRepository ippMessageRepository = getInstance();
             Stream<IppResponse> ippResponses = ippMessageRepository.findAllIppResponses();
 
-            logger.info("Rewrite ipp responses normalized.");
-            ippResponses.forEach(ippResponse -> {
-                try {
-                    IppAttributesGroup attributes = ippResponse.getPrinterGroup();
-                    SavePrinterAttributes.hardcodePrivateValues(attributes);
-                    SavePrinterAttributes.hardcodeVolatileValues(attributes);
-                    ippMessageRepository.saveIppResponse(ippResponse, true);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-            //long count = ippResponses.count();
+            boolean normalize = true;
+            if(normalize) {
+                logger.info("Rewrite ipp responses normalized.");
+                ippResponses.forEach(ippResponse -> {
+                    try {
+                        boolean modified = new AttributesNormalizer(ippResponse).normalize();
+                        if(modified) ippMessageRepository.saveIppResponse(ippResponse, true);
+                    } catch (IOException ioException) {
+                        //logger.warning(ioException.toString());
+                        throw new RuntimeException(ioException);
+                    }
+                });
+            } else {
+                ippResponses.collect(Collectors.toList());
+            }
         } catch (Throwable throwable) {
             logger.log(Level.SEVERE, "main failed", throwable);
         }
