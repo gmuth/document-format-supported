@@ -102,7 +102,7 @@ printer-attributes-tag
   document-format-preferred (mimeMediaType) = image/urf
   marker-colors (nameWithoutLanguage) = #000000
   marker-high-levels (integer) = 100
-  marker-levels (integer) = 50
+  marker-levels (integer) = 32
   marker-low-levels (integer) = 5
   marker-names (nameWithoutLanguage) = Black Toner_S/N_:CRUM-230512A4EFE
   marker-types (keyword) = toner

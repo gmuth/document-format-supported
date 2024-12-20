@@ -42,4 +42,4 @@ To share your saved printer attributes (ipp response file)
 - or fork this repo, add the `.res` file and create a pull request.
 
 [Attributes are normalized](https://github.com/gmuth/document-format-supported/blob/main/src/main/java/de/gmuth/ipp/AttributesNormalizer.java)
-by hardcoding private and volatile attributes.
+by hardcoding private or volatile attribute values.

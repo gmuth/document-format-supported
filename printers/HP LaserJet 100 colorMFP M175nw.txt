@@ -54,7 +54,7 @@ printer-attributes-tag
   marker-types (1setOf keyword) = toner,toner,toner,toner,opc
   marker-low-levels (1setOf integer) = 1,1,1,1,1
   marker-high-levels (1setOf integer) = 100,100,100,100,100
-  marker-levels (1setOf integer) = 50,50,50,50,50
+  marker-levels (1setOf integer) = 88,87,91,56,0
   copies-default (integer) = 1
   multiple-document-handling-default (keyword) = single-document
   finishings-default (1setOf enum) = none
