@@ -1,25 +1,18 @@
 
 ## Usage
 
-### Bonjour
+### Automatic discovery
 
-If your printer has Bonjour, AirPrint or Mopria enabled run  `java -jar printer-attributes.jar` without arguments. The tool will use mdns to discover your printers.
+Run  `java -jar printer-attributes.jar` without arguments to discover printers having Bonjour, AirPrint or Mopria enabled.
 
-### Hostname or print-uri
+### printer-uri with known IP or hostname
 
-You can query specific printers by running `java -jar printer-attributes.jar ipp://yourprinter ipp://otherprinter`.
+Run `java -jar printer-attributes.jar ipp://yourprinter ipp://otherprinter` to query specific printers.
 
 ### MacOS native
 
-If you don't have Java installed you can run `printer-attributes-arm64`
+Run `printer-attributes-arm64` if you don't have Java installed.
 
-### Generate Readme
+### Generate README.md
 
-You can generate this Readme file with a fresh list of document formats by running:
-
-`java -cp printer-attributes.jar de.gmuth.md.GenerateReadme`
-
-or simply
-
-`./mvnw`
-
+by running `java -cp printer-attributes.jar de.gmuth.md.GenerateReadme` or `./mvnw`
