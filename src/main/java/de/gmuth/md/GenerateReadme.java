@@ -23,20 +23,23 @@ public class GenerateReadme {
     static Logger logger = Logging.getLogger(GenerateReadme.class);
     static private IppMessageRepository ippMessageRepository;
 
-    public void generateReadme() throws Exception {
+    public void generateReadmeFile() throws Exception {
         ippMessageRepository = IppMessageRepository.getInstance();
+        generatePrintersFile();
         File mdFile = new File("README.md");
         logger.info(() -> "> Generate markdown file: " + mdFile);
         OutputStream outputStream = new FileOutputStream(mdFile);
         try (outputStream) {
-            copyFile("introduction.md", outputStream);
-            writePrinterTable(outputStream);
-            copyFile("usage.md", outputStream);
-            copyFile("contribute.md", outputStream);
+            copyFile("md/introduction.md", outputStream);
+            copyFile("md/printers.md", outputStream);
+            copyFile("md/usage.md", outputStream);
+            copyFile("md/contribute.md", outputStream);
         }
     }
 
-    protected void writePrinterTable(OutputStream outputStream) throws IOException {
+    protected void generatePrintersFile() throws IOException {
+        File mdFile = new File("md/printers.md");
+        logger.info(() -> "> Generate markdown file: " + mdFile);
         List<PrinterDescription> printerDescriptions = getPrinterDescriptions();
         logger.info("Writing " + printerDescriptions.size() + " printer descriptions:");
         MarkdownTable mdTable = new MarkdownTable();
@@ -46,7 +49,7 @@ public class GenerateReadme {
             logger.info(printerDescription.toString());
         });
         mdTable.addTitleSeparator(); // uses max column width!
-        mdTable.writeMarkdown(outputStream);
+        mdTable.writeMarkdown(mdFile);
     }
 
     private List<PrinterDescription> getPrinterDescriptions() throws IOException {
@@ -70,7 +73,7 @@ public class GenerateReadme {
     public static void main(String[] args) {
         Logging.configure(Level.INFO);
         try {
-            new GenerateReadme().generateReadme();
+            new GenerateReadme().generateReadmeFile();
         } catch (Throwable throwable) {
             logger.log(Level.SEVERE, "main failed", throwable);
         }

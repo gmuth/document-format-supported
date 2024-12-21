@@ -4,10 +4,11 @@ This is a community project to document supported formats of IPP printers.
 Please contribute to this repository by sharing your printers attributes.
 
 ## Formats reported via IPP
-|Make and Model                 |application                                                          |image|text |
-|-------------------------------|---------------------------------------------------------------------|-----|-----|
-|HP LaserJet 100 colorMFP M175nw|pdf, postscript, vnd.hp-PCL, vnd.hp-PCLXL                            |urf  |     |
-|Xerox B210 Printer             |PCL, PCLm, octet-stream, postscript, vnd.hp-PCL, vnd.hp-PCLXL, x-QPDL|urf  |plain|
+|Make and Model                 |application                                                          |image    |text |
+|-------------------------------|---------------------------------------------------------------------|---------|-----|
+|HP LaserJet 100 colorMFP M175nw|pdf, postscript, vnd.hp-PCL, vnd.hp-PCLXL                            |urf      |     |
+|HP LaserJet Pro MFP M127fw     |PCLm, octet-stream                                                   |jpeg, urf|     |
+|Xerox B210 Printer             |PCL, PCLm, octet-stream, postscript, vnd.hp-PCL, vnd.hp-PCLXL, x-QPDL|urf      |plain|
 
 ## Usage
 

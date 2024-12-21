@@ -6,8 +6,7 @@ package de.gmuth.md;
 
 import de.gmuth.log.Logging;
 
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,6 +45,10 @@ public class MarkdownTable extends ArrayList<List<String>> {
                 .collect(Collectors.joining("|", "|", "|"));
         forEach(row -> printWriter.println(format(formatString, row.get(0), row.get(1), row.get(2), row.get(3))));
         printWriter.flush();
+    }
+
+    public void writeMarkdown(File file) throws FileNotFoundException {
+        writeMarkdown(new FileOutputStream(file));
     }
 
 }

@@ -45,7 +45,7 @@ public class SavePrinterAttributes {
                 }
                 jmDns.close();
             }
-            if (generateReadme) new GenerateReadme().generateReadme();
+            if (generateReadme) new GenerateReadme().generateReadmeFile();
         } catch (Throwable throwable) {
             logger.log(Level.SEVERE, "main failed", throwable);
         }
