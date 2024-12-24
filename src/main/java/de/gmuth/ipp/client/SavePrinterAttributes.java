@@ -1,10 +1,9 @@
-package de.gmuth.ipp;
+package de.gmuth.ipp.client;
 
 /**
  * Copyright (c) 2024 Gerhard Muth
  */
 
-import de.gmuth.ipp.client.IppClient;
 import de.gmuth.ipp.core.IppAttributesGroup;
 import de.gmuth.ipp.core.IppRequest;
 import de.gmuth.ipp.core.IppResponse;
@@ -68,7 +67,7 @@ public class SavePrinterAttributes {
         try {
             IppClient ippClient = new IppClient();
             IppRequest ippRequest = ippClient.ippRequest(GetPrinterAttributes, URI.create(printerUri), null, null);
-            IppResponse ippResponse = ippClient.exchange(ippRequest);
+            IppResponse ippResponse = ippClient.exchangeWrapped(ippRequest);
             logger.info("Get printer attributes from " + printerUri + " -> " + ippResponse);
             IppAttributesGroup attributes = ippResponse.getPrinterGroup();
             if (attributes.containsKey("cups-version")) {
@@ -82,6 +81,12 @@ public class SavePrinterAttributes {
         } catch (Exception exception) {
             logger.warning("Failed to get attributes from " + printerUri);
             logger.warning(exception.toString());
+        }
+    }
+
+    static class IppClient extends de.gmuth.ipp.client.IppClient {
+        IppResponse exchangeWrapped(IppRequest ippRequest) {
+            return super.exchange(ippRequest);
         }
     }
 

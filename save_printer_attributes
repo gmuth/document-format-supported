@@ -1,1 +1,1 @@
-java -cp printer-attributes.jar de.gmuth.ipp.SavePrinterAttributes $*
+java -cp printer-attributes.jar de.gmuth.ipp.client.SavePrinterAttributes $*

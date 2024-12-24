@@ -45,7 +45,7 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
-            <!-- exec:java -Dexec.mainClass=de.gmuth.ipp.SavePrinterAttributes -->
+            <!-- exec:java -Dexec.mainClass=de.gmuth.ipp.client.SavePrinterAttributes -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -67,7 +67,7 @@
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>de.gmuth.ipp.SavePrinterAttributes</mainClass>
+                            <mainClass>de.gmuth.ipp.client.SavePrinterAttributes</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

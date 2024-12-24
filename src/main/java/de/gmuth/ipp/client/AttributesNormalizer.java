@@ -1,4 +1,4 @@
-package de.gmuth.ipp;
+package de.gmuth.ipp.client;
 
 /**
  * Copyright (c) 2024 Gerhard Muth
@@ -14,7 +14,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,7 +32,7 @@ public class AttributesNormalizer {
         this.attributes = ippResponse.getPrinterGroup();
     }
 
-    boolean normalize() {
+    public boolean normalize() {
         logger.fine("Normalize response: " + response);
         byte[] oldBytes = response.getRawBytes();
         hardcodePrivateValues();

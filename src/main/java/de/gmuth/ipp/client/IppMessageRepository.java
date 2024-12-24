@@ -1,4 +1,4 @@
-package de.gmuth.ipp;
+package de.gmuth.ipp.client;
 
 /**
  * Copyright (c) 2024 Gerhard Muth
@@ -19,9 +19,9 @@ import java.util.stream.Stream;
 
 public class IppMessageRepository {
 
-    private static Path ippMessagePath = Path.of("printers");
+    public static Path ippMessagePath = Path.of("printers");
     private static IppMessageRepository instance;
-    private static Logger logger = Logging.getLogger(IppMessageRepository.class);
+    private static final Logger logger = Logging.getLogger(IppMessageRepository.class);
 
     public static IppMessageRepository getInstance() {
         if (instance == null) instance = new IppMessageRepository();
@@ -51,7 +51,7 @@ public class IppMessageRepository {
 
     public Stream<IppResponse> findAllIppResponses() throws IOException {
         return findAllIppResponsePaths(".res")
-                .map(it -> getIppResponse(it));
+                .map(this::getIppResponse);
     }
 
     public void saveIppResponse(IppResponse ippResponse, Boolean saveText) throws IOException {
@@ -68,7 +68,7 @@ public class IppMessageRepository {
         }
     }
 
-    private static String getFilenameFor(IppResponse ippResponse) {
+    public static String getFilenameFor(IppResponse ippResponse) {
         IppString makeAndModel = ippResponse.getPrinterGroup().getValue("printer-make-and-model");
         return makeAndModel.getText().replaceAll("[/\\\\:*?\"<>|]", "_");
     }

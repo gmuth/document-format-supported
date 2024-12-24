@@ -4,8 +4,8 @@ package de.gmuth.md;
  * Copyright (c) 2024 Gerhard Muth
  */
 
-import de.gmuth.ipp.IppMessageRepository;
-import de.gmuth.ipp.PrinterDescription;
+import de.gmuth.ipp.client.IppMessageRepository;
+import de.gmuth.ipp.client.PrinterDescription;
 import de.gmuth.log.Logging;
 
 import java.io.File;
