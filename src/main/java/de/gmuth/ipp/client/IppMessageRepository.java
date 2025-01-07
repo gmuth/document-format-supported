@@ -1,7 +1,7 @@
 package de.gmuth.ipp.client;
 
 /**
- * Copyright (c) 2024 Gerhard Muth
+ * Copyright (c) 2024-2025 Gerhard Muth
  */
 
 import de.gmuth.ipp.core.IppResponse;
@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -28,15 +29,22 @@ public class IppMessageRepository {
         return instance;
     }
 
+    private List<IppResponse> allIppResponses;
+    private List<String> allMakeAndModels;
+
     private IppMessageRepository() {
         try {
             if (!Files.exists(ippMessagePath)) {
-                logger.info("Creating ipp message directory " + ippMessagePath);
+                logger.info("Creating IPP message directory " + ippMessagePath);
                 Files.createDirectory(ippMessagePath);
             }
-            logger.info("Using ipp message directory: " + ippMessagePath);
-            long numberOfResponses = findAllIppResponsePaths(".res").count();
-            logger.info(numberOfResponses + " ipp responses available.");
+            logger.info("Using IPP message directory: " + ippMessagePath);
+            allIppResponses = findAllIppResponses().collect(Collectors.toList());
+            allMakeAndModels = allIppResponses.stream()
+                    .map(IppMessageRepository::getPrinterMakeAndModel)
+                    .collect(Collectors.toList());
+            long numberOfResponses = allIppResponses.size();
+            logger.info(numberOfResponses + " IPP responses available.");
         } catch (IOException ioException) {
             logger.severe("Failed to initialize IppMessageRepository: " + ioException.getMessage());
             throw new UncheckedIOException(ioException);
@@ -68,9 +76,12 @@ public class IppMessageRepository {
         }
     }
 
+    public static String getPrinterMakeAndModel(IppResponse ippResponse) {
+        return ((IppString) (ippResponse.getPrinterGroup().getValue("printer-make-and-model"))).getText();
+    }
+
     public static String getFilenameFor(IppResponse ippResponse) {
-        IppString makeAndModel = ippResponse.getPrinterGroup().getValue("printer-make-and-model");
-        return makeAndModel.getText().replaceAll("[/\\\\:*?\"<>|]", "_");
+        return getPrinterMakeAndModel(ippResponse).replaceAll("[/\\\\:*?\"<>|]", "_");
     }
 
     private IppResponse getIppResponse(Path path) {
@@ -86,6 +97,10 @@ public class IppMessageRepository {
 
     public IppResponse getIppResponse(String makeAndModel) {
         return getIppResponse(ippMessagePath.resolve(makeAndModel + ".res"));
+    }
+
+    public boolean makeAndModelExists(String makeAndModel) {
+        return allMakeAndModels.contains(makeAndModel);
     }
 
     public static void main(String[] args) {
