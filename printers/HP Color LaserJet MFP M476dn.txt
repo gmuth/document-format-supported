@@ -1,0 +1,112 @@
+# File: HP Color LaserJet MFP M476dn.txt (decoded 10147 raw IPP bytes)
+version 2.0
+successful-ok
+request-id 1
+operation-attributes-tag
+  attributes-charset (charset) = utf-8
+  attributes-natural-language (naturalLanguage) = en
+printer-attributes-tag
+  printer-uri-supported (1setOf uri) = ipp://123.45.67.89:631/ipp/print,ipps://123.45.67.89:443/ipp/print
+  uri-security-supported (1setOf keyword) = none,tls
+  uri-authentication-supported (1setOf keyword) = requesting-user-name,requesting-user-name
+  printer-name (nameWithoutLanguage) = HP Color LaserJet MFP M476dn
+  printer-location (textWithoutLanguage) = Greenwich
+  printer-more-info (uri) = http://123.45.67.89/hp/device/info_config_AirPrint.html?tab=Networking&menu=AirPrintStatus
+  printer-info (textWithoutLanguage) = HP Color LaserJet MFP M476dn
+  printer-make-and-model (textWithoutLanguage) = HP Color LaserJet MFP M476dn
+  printer-state (enum) = idle
+  printer-state-reasons (1setOf keyword) = none
+  ipp-versions-supported (1setOf keyword) = 1.0,1.1,2.0
+  ipp-features-supported (1setOf keyword) = airprint-1.3
+  operations-supported (1setOf enum) = Print-Job,Print-URI,Validate-Job,Create-Job,Send-Document,Send-URI,Cancel-Job,Get-Job-Attributes,Get-Jobs,Get-Printer-Attributes,Identify-Printer
+  multiple-document-jobs-supported (boolean) = false
+  multiple-operation-time-out (integer) = 120 (PT2M)
+  charset-configured (charset) = utf-8
+  charset-supported (1setOf charset) = utf-8,us-ascii
+  natural-language-configured (naturalLanguage) = en
+  generated-natural-language-supported (1setOf naturalLanguage) = en
+  document-format-default (mimeMediaType) = application/pdf
+  document-format-supported (1setOf mimeMediaType) = image/urf,application/pdf,application/postscript,application/vnd.hp-PCL,application/vnd.hp-PCLXL,application/PCLm,application/octet-stream,image/jpeg
+  reference-uri-schemes-supported (1setOf uriScheme) = http,https
+  printer-is-accepting-jobs (boolean) = true
+  queued-job-count (integer) = 0
+  pdl-override-supported (keyword) = attempted
+  printer-up-time (integer) = 0 (PT0S)
+  compression-supported (1setOf keyword) = none
+  color-supported (boolean) = true
+  page-ranges-supported (boolean) = true
+  job-creation-attributes-supported (1setOf keyword) = copies,finishings,sides,orientation-requested,media,print-quality,printer-resolution,output-bin,media-col,output-mode,ipp-attribute-fidelity,job-name,page-ranges,multiple-document-handling,pdf-fit-to-page,print-scaling,print-color-mode,print-content-optimize,manual-duplex-sheet-count,margins-pre-applied,pclm-source-resolution
+  media-supported (1setOf keyword) = na_letter_8.5x11in,na_legal_8.5x14in,na_executive_7.25x10.5in,na_foolscap_8.5x13in,na_oficio_8.5x13.4in,na_index-4x6_4x6in,na_index-5x8_5x8in,iso_a4_210x297mm,iso_a5_148x210mm,iso_a6_105x148mm,jis_b5_182x257mm,om_small-photo_100x150mm,prc_16k-195x270_195x270mm,prc_16k-184x260_184x260mm,roc_16k_7.75x10.75in,jpn_hagaki_100x148mm,jpn_oufuku_148x200mm,na_number-10_4.125x9.5in,na_monarch_3.875x7.5in,iso_b5_176x250mm,iso_c5_162x229mm,iso_dl_110x220mm,custom_min_3x5in,custom_max_8.5x14in
+  media-size-supported (1setOf collection) = {x-dimension=21590 y-dimension=27940},{x-dimension=21590 y-dimension=35560},{x-dimension=18415 y-dimension=26670},{x-dimension=21590 y-dimension=33020},{x-dimension=21590 y-dimension=34036},{x-dimension=10160 y-dimension=15240},{x-dimension=12700 y-dimension=20320},{x-dimension=21000 y-dimension=29700},{x-dimension=14800 y-dimension=21000},{x-dimension=10500 y-dimension=14800},{x-dimension=18200 y-dimension=25700},{x-dimension=10000 y-dimension=15000},{x-dimension=19500 y-dimension=27000},{x-dimension=18400 y-dimension=26000},{x-dimension=19685 y-dimension=27305},{x-dimension=10000 y-dimension=14800},{x-dimension=14800 y-dimension=20000},{x-dimension=10477 y-dimension=24130},{x-dimension=9842 y-dimension=19050},{x-dimension=17600 y-dimension=25000},{x-dimension=16200 y-dimension=22900},{x-dimension=11000 y-dimension=22000},{x-dimension=7620..21590 y-dimension=12700..35560}
+  media-default (keyword) = iso_a4_210x297mm
+  media-col-supported (1setOf keyword) = media-type,media-size,media-top-margin,media-left-margin,media-right-margin,media-bottom-margin,media-source,media-source-properties,duplex-supported
+  media-col-default (collection) = {media-size={x-dimension=21000 y-dimension=29700} media-top-margin=423 media-bottom-margin=423 media-left-margin=423 media-right-margin=423 media-source=auto media-type=stationery duplex-supported=1}
+  media-left-margin-supported (1setOf integer) = 423
+  media-right-margin-supported (1setOf integer) = 423
+  media-top-margin-supported (1setOf integer) = 423
+  media-bottom-margin-supported (1setOf integer) = 423
+  media-source-supported (1setOf keyword) = auto,manual,tray-1,tray-2
+  media-type-supported (1setOf nameWithoutLanguage) = stationery,HPMatte90gsm,HPMatte105gsm,HPMatte120gsm,HPMatte160gsm,HPCover,HPGlossy130gsm,photographic-glossy,HPTrifoldGlossy160gsm,HPGlossyPhoto,stationery-lightweight,extraLight,intermediate,midweight,stationery-heavyweight,extraHeavy,photographic-high-gloss,extraHeavyGloss,cardGlossy,transparency,labels,stationery-letterhead,envelope,envelope-heavyweight,stationery-preprinted,stationery-prepunched,stationery-colored,stationery-bond,recycled,rough,heavyRough,toughPaper,photographic-film
+  job-constraints-supported (1setOf collection) = {resolver-name=duplex-unsupported-media sides=two-sided-short-edge,two-sided-long-edge media-col={media-size={x-dimension=21590 y-dimension=34036},{x-dimension=10160 y-dimension=15240},{x-dimension=12700 y-dimension=20320},{x-dimension=14800 y-dimension=21000},{x-dimension=10500 y-dimension=14800},{x-dimension=10000 y-dimension=15000},{x-dimension=19500 y-dimension=27000},{x-dimension=18400 y-dimension=26000},{x-dimension=19685 y-dimension=27305},{x-dimension=10000 y-dimension=14800},{x-dimension=14800 y-dimension=20000},{x-dimension=10477 y-dimension=24130},{x-dimension=9842 y-dimension=19050},{x-dimension=17600 y-dimension=25000},{x-dimension=16200 y-dimension=22900},{x-dimension=11000 y-dimension=22000} media-type=HPCover,HPGlossyPhoto,cardGlossy,transparency,labels,envelope,envelope-heavyweight}}
+  job-resolvers-supported (1setOf collection) = {resolver-name=duplex-unsupported-media sides=one-sided}
+  pages-per-minute (integer) = 21
+  pages-per-minute-color (integer) = 21
+  jpeg-k-octets-supported (rangeOfInteger) = 0-11719
+  jpeg-x-dimension-supported (rangeOfInteger) = 0-8192
+  jpeg-y-dimension-supported (rangeOfInteger) = 1-8192
+  pdf-k-octets-supported (rangeOfInteger) = 0-75000
+  pdf-versions-supported (1setOf keyword) = adobe-1.2,adobe-1.3,adobe-1.4,adobe-1.5,adobe-1.6,adobe-1.7,iso-19005-1_2005,iso-32000-1_2008
+  urf-supported (1setOf keyword) = V1.3,CP99,W8,OB10,PQ3-4-5,ADOBERGB24,DEVRGB24,DEVW8,SRGB24,DM1,IS1-2-4,MT1-2-3-5-12,RS600
+  printer-uuid (uri) = urn:uuid:01234567-89ab-cdef-0123-456789abcdef
+  marker-names (1setOf nameWithoutLanguage) = Cyan Cartridge HP CF381A,Magenta Cartridge HP CF383A,Yellow Cartridge HP CF382A,Black Cartridge HP CF380X
+  marker-colors (1setOf nameWithoutLanguage) = #00FFFF,#FF00FF,#FFFF00,#000000
+  marker-types (1setOf keyword) = toner,toner,toner,toner
+  marker-low-levels (1setOf integer) = 3,3,3,3
+  marker-high-levels (1setOf integer) = 100,100,100,100
+  marker-levels (1setOf integer) = 50,50,50,50
+  copies-default (integer) = 1
+  multiple-document-handling-default (keyword) = single-document
+  finishings-default (1setOf enum) = none
+  orientation-requested-default (enum) = portrait
+  print-quality-default (enum) = normal
+  printer-resolution-default (resolution) = 600 dpi
+  sides-default (keyword) = one-sided
+  output-bin-default (keyword) = face-down
+  output-mode-default (keyword) = auto
+  copies-supported (rangeOfInteger) = 1-999
+  multiple-document-handling-supported (1setOf keyword) = single-document,separate-documents-uncollated-copies,separate-documents-collated-copies,single-document-new-sheet
+  finishings-supported (1setOf enum) = none
+  orientation-requested-supported (1setOf enum) = portrait,landscape,reverse-landscape,reverse-portrait
+  print-quality-supported (1setOf enum) = normal,draft
+  printer-resolution-supported (1setOf resolution) = 600 dpi
+  sides-supported (1setOf keyword) = one-sided,two-sided-short-edge,two-sided-long-edge
+  job-impressions-supported (rangeOfInteger) = 1-99999
+  job-media-sheets-supported (rangeOfInteger) = 1-99999
+  output-bin-supported (1setOf keyword) = face-down
+  output-mode-supported (1setOf keyword) = auto,monochrome,color
+  printer-icons (1setOf uri) = http://123.45.67.89/ipp/images/printer.png,http://123.45.67.89/ipp/images/printer-large.png
+  printer-supply-info-uri (uri) = http://123.45.67.89/hp/device/mSupplyStatus.html
+  printer-device-id (textWithoutLanguage) = MFG:Hewlett-Packard;CMD:PJL,PML,PCLXL,URP,PCL,PDF,POSTSCRIPT;MDL:HP Color LaserJet MFP M476dn;CLS:PRINTER;DES:Hewlett-Packard Color LaserJet MFP M476dn;MEM:MEM=226MB;COMMENT:RES=600x8;LEDMDIS:USB#ff#04#01;CID:HPLJPDLV1;
+  printer-dns-sd-name (nameWithoutLanguage) = HP Color LaserJet MFP M476dn
+  printer-geo-location (unknown) = 
+  printer-kind (1setOf keyword) = document,envelope,photo
+  landscape-orientation-requested-preferred (enum) = reverse-landscape
+  identify-actions-default (1setOf keyword) = display
+  identify-actions-supported (1setOf keyword) = display
+  print-scaling-default (keyword) = auto
+  print-scaling-supported (1setOf keyword) = auto,auto-fit,fill,fit,none
+  epcl-version-supported (keyword) = epcl1.0
+  image-enhancement-supported (1setOf keyword) = object-tagging,k-plane-enhancement
+  manual-duplex-supported (1setOf boolean) = false,true
+  pclm-raster-back-side (keyword) = normal
+  pclm-compression-method-preferred (keyword) = jpeg
+  pclm-source-resolution-supported (1setOf resolution) = 600 dpi
+  pclm-strip-height-preferred (1setOf integer) = 16
+  pclm-strip-height-supported (1setOf integer) = 0,16,32,64,128,256,512
+  pdf-fit-to-page-default (boolean) = false
+  pdf-fit-to-page-supported (1setOf boolean) = false,true
+  pdf-size-constraints (integer) = 75000000
+  print-color-mode-default (keyword) = auto
+  print-color-mode-supported (1setOf keyword) = auto,monochrome,color
+  print-content-optimize-default (keyword) = auto
+  print-content-optimize-supported (1setOf keyword) = auto,photo,graphics,text,text-and-graphics
