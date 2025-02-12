@@ -1,8 +1,10 @@
 package de.gmuth.log;
 
 /**
- * Copyright (c) 2024 Gerhard Muth
+ * Copyright (c) 2024-2025 Gerhard Muth
  */
+
+import de.gmuth.ipp.client.IppClient;
 
 import java.util.Locale;
 import java.util.logging.*;
@@ -33,6 +35,11 @@ public class Logging {
             setLevel(Level.ALL);
             Logging.stdoutHandler = this;
         }});
+        configureLogLevels();
+    }
+
+    public static void configureLogLevels() {
+        setLogLevel(IppClient.class, Level.INFO); // ?? SavePrinterAttributes$IppClient
     }
 
     public static void flush() {
@@ -43,9 +50,14 @@ public class Logging {
         return Logger.getLogger(clazz.getCanonicalName());
     }
 
+    public static void setLogLevel(Class clazz, Level level) {
+        getLogger(clazz).setLevel(level);
+    }
+
     public static void main(String[] args) {
         Logging.configure(Level.ALL);
         Logger logger = Logging.getLogger(Logging.class);
+        setLogLevel(Logging.class, Level.FINEST);
         try {
             logger.severe(() -> "severe");
             logger.warning(() -> "warning");
