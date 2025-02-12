@@ -1,4 +1,4 @@
-# File: Xerox B210 Printer.txt (decoded 9096 raw IPP bytes)
+# File: Xerox B210 Printer.txt (decoded 9065 raw IPP bytes)
 version 2.0
 successful-ok
 request-id 1
@@ -61,7 +61,7 @@ printer-attributes-tag
   uri-security-supported (1setOf keyword) = none
   uri-authentication-supported (1setOf keyword) = none
   printer-name (nameWithoutLanguage) = Xerox B210 Printer
-  printer-location (textWithoutLanguage) = Greenwich
+  printer-location (textWithoutLanguage) = 
   printer-info (textWithoutLanguage) = Xerox B210 Printer
   printer-more-info (uri) = http://123.45.67.89:631/airprintRedirect.dhtml
   printer-driver-installer (uri) = http://www.support.xerox.com/support/
@@ -80,7 +80,7 @@ printer-attributes-tag
   document-format-supported (1setOf mimeMediaType) = application/octet-stream,application/PCL,application/postscript,application/vnd.hp-PCL,application/vnd.hp-PCLXL,application/x-QPDL,text/plain,image/urf,application/PCLm
   printer-is-accepting-jobs (boolean) = true
   queued-job-count (integer) = 0
-  printer-message-from-operator (textWithoutLanguage) = Abandoning solar time.
+  printer-message-from-operator (textWithoutLanguage) = 
   color-supported (boolean) = false
   pdl-override-supported (keyword) = attempted
   printer-up-time (integer) = 0 (PT0S)
