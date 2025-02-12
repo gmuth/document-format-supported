@@ -51,6 +51,7 @@ public class AttributesNormalizer {
 
     private void hardcodePrivateValues() {
         normalizeAttributeValue("printer-location", "Greenwich");
+        normalizeAttributeValue("printer-wifi-ssid", "Observatory");
         normalizeAttributeValue("printer-geo-location", URI.create("geo:51.477,0"));
         normalizeAttributeValues("printer-organization", "International Meridian Conference");
         normalizeAttributeValues("printer-organizational-unit", "1884");
@@ -125,16 +126,16 @@ public class AttributesNormalizer {
     }
 
     boolean attributeValuesShouldBeNormalized(String name) {
-        if(!attributes.containsKey(name)) return false;
+        if (!attributes.containsKey(name)) return false;
         IppAttribute<?> attribute = attributes.get(name);
-        if(attribute.getTag().isOutOfBandTag()) return false;
+        if (attribute.getTag().isOutOfBandTag()) return false;
         boolean attributeValueIsEmpty = attributeValueIsEmpty(attribute);
-        if(attributeValueIsEmpty) logger.fine ("*** attributeValueIsEmpty *** " + attribute);
+        if (attributeValueIsEmpty) logger.fine("*** attributeValueIsEmpty *** " + attribute);
         return !attributeValueIsEmpty;
     }
 
     boolean attributeValueIsEmpty(IppAttribute<?> attribute) {
-         if(attribute.is1setOf()) {
+        if (attribute.is1setOf()) {
             Collection<?> values = attribute.getValues();
             return values.isEmpty() || values.size() == 1 && valueIsEmpty(values.iterator().next());
         } else {
@@ -143,9 +144,9 @@ public class AttributesNormalizer {
     }
 
     boolean valueIsEmpty(Object value) {
-        if(value instanceof String) {
+        if (value instanceof String) {
             return ((String) value).isEmpty();
-        } else if(value instanceof IppString) {
+        } else if (value instanceof IppString) {
             return ((IppString) value).getText().isEmpty();
         }
         return false;

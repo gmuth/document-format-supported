@@ -1,4 +1,4 @@
-# File: HP Color LaserJet MFP M477fdw.txt (decoded 11378 raw IPP bytes)
+# File: HP Color LaserJet MFP M477fdw.txt (decoded 11385 raw IPP bytes)
 version 2.0
 successful-ok
 request-id 1
@@ -97,7 +97,7 @@ printer-attributes-tag
   printer-geo-location (unknown) = 
   printer-kind (1setOf keyword) = document,envelope,photo
   landscape-orientation-requested-preferred (enum) = reverse-landscape
-  printer-wifi-ssid (nameWithoutLanguage) = Jung
+  printer-wifi-ssid (nameWithoutLanguage) = Observatory
   printer-wifi-state (enum) = 8
   identify-actions-default (1setOf keyword) = display
   identify-actions-supported (1setOf keyword) = display
