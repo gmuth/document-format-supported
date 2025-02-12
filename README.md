@@ -32,8 +32,8 @@ by running `java -cp printer-attributes.jar de.gmuth.md.GenerateReadme` or `./mv
 Using the inspect workflow of the ipp-client library you can save unmodified original printer and job attributes.
 
 ```
-    java -cp printer-attributes.jar de.gmuth.ipp.client.InspectPrinters # automatic discovery
-    java -cp printer-attributes.jar de.gmuth.ipp.client.InspectPrinters ipp://yourprinter ipp://otherprinter
+    java -cp printer-attributes.jar de.gmuth.ipp.client.InspectPrinters # Bonjour
+    java -cp printer-attributes.jar de.gmuth.ipp.client.InspectPrinters ipp://yourprinter
 ```
 
 ### Contribute your printer attributes
