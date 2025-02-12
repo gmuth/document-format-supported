@@ -1,0 +1,1 @@
+java -cp printer-attributes.jar de.gmuth.ipp.client.InspectPrinters $*

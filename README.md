@@ -27,6 +27,15 @@ Run `java -jar printer-attributes.jar ipp://yourprinter ipp://otherprinter` to q
 
 by running `java -cp printer-attributes.jar de.gmuth.md.GenerateReadme` or `./mvnw`
 
+### Save raw IPP unmodified
+
+Using the inspect workflow of the ipp-client library you can save unmodified original printer and job attributes.
+
+```
+    java -cp printer-attributes.jar de.gmuth.ipp.client.InspectPrinters # automatic discovery
+    java -cp printer-attributes.jar de.gmuth.ipp.client.InspectPrinters ipp://yourprinter ipp://otherprinter
+```
+
 ### Contribute your printer attributes
 
 To share your saved printer attributes (ipp response file)
