@@ -25,7 +25,7 @@ public class SavePrinterAttributes {
     public boolean forceSaving = false;
 
     public static void main(String[] args) {
-        Logging.configure(Level.INFO);
+        Logging.configure(Level.INFO, true);
         ippMessageRepository = IppMessageRepository.getInstance();
         try {
             new SavePrinterAttributes().getPrinterUrisAndSaveAttributes(args);
@@ -42,7 +42,7 @@ public class SavePrinterAttributes {
             logger.info("> printerUris from args: " + String.join(", ", argList));
             argList.forEach(this::getAndSavePrinterAttributes);
         } else {
-            logger.info("> Looking for mdns services of type _ipp._tcp.local.");
+            logger.info("Looking for mdns services of type _ipp._tcp.local.");
             Logging.flush();
             PrinterDiscovery.discoverPrinters(this::getAndSavePrinterAttributes);
         }

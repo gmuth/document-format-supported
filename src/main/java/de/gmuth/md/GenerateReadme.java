@@ -55,7 +55,7 @@ public class GenerateReadme {
     private List<PrinterDescription> getPrinterDescriptions() throws IOException {
         Map<String, PrinterDescription> printerDescriptionMap = new LinkedHashMap<>();
         ippMessageRepository
-                .findAllIppResponses()
+                .allIppResponses.stream()
                 .map(PrinterDescription::fromIppResponse)
                 .sorted(Comparator.comparing(it -> it.makeAndModel))
                 .forEach(it -> {
@@ -71,7 +71,7 @@ public class GenerateReadme {
     }
 
     public static void main(String[] args) {
-        Logging.configure(Level.INFO);
+        Logging.configure(Level.INFO, true);
         try {
             new GenerateReadme().generateReadmeFile();
         } catch (Throwable throwable) {

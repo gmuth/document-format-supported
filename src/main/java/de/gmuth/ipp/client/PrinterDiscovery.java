@@ -30,7 +30,7 @@ class PrinterDiscovery implements ServiceListener {
         PrinterDiscovery serviceListener = new PrinterDiscovery(aListener);
         JmDNS jmDNS = JmDNS.create();
         jmDNS.addServiceListener("_ipp._tcp.local.", serviceListener);
-        serviceListener.waitUntilIdleFor(Duration.ofSeconds(2));
+        serviceListener.waitUntilIdleFor(Duration.ofSeconds(3));
         jmDNS.close();
     }
 
@@ -62,7 +62,7 @@ class PrinterDiscovery implements ServiceListener {
     public void serviceResolved(ServiceEvent serviceEvent) {
         lastServiceEvent = now();
         ServiceInfo serviceInfo = serviceEvent.getInfo();
-        logger.info("> Discovered printer " + serviceInfo.getName() + ".");
+        logger.info("Discovered printer: " + serviceInfo.getName());
         String printerUri = String.format("ipp://%s:%d/%s",
                 serviceInfo.getServer(),
                 serviceInfo.getPort(),

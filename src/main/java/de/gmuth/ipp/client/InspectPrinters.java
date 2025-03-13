@@ -17,7 +17,7 @@ public class InspectPrinters {
     static Logger logger = Logging.getLogger(InspectPrinters.class);
 
     public static void main(String[] args) {
-        Logging.configure(Level.INFO);
+        Logging.configure(Level.INFO, true);
         try {
             new InspectPrinters().inspectPrinters(args);
         } catch (Throwable throwable) {

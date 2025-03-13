@@ -29,9 +29,9 @@ public class IppMessageRepository {
         return instance;
     }
 
-    private List<IppResponse> allIppResponses;
+    public List<IppResponse> allIppResponses;
     private List<String> allMakeAndModels;
-
+    
     private IppMessageRepository() {
         try {
             if (!Files.exists(ippMessagePath)) {
@@ -59,7 +59,7 @@ public class IppMessageRepository {
 
     public Stream<IppResponse> findAllIppResponses() throws IOException {
         return findAllIppResponsePaths(".res")
-                .map(this::getIppResponse);
+                .map(this::readIppResponse);
     }
 
     public void saveIppResponse(IppResponse ippResponse, Boolean saveText) throws IOException {
@@ -84,45 +84,43 @@ public class IppMessageRepository {
         return getPrinterMakeAndModel(ippResponse).replaceAll("[/\\\\:*?\"<>|]", "_");
     }
 
-    private IppResponse getIppResponse(Path path) {
+    private IppResponse readIppResponse(Path path) {
         try {
             IppResponse ippResponse = new IppResponse();
             ippResponse.decode(Files.readAllBytes(path));
-            logger.info(String.format("Reading %s -> %s ", path.getFileName(), ippResponse));
+            logger.info(String.format("Reading %-35s %s ", path.getFileName(), ippResponse));
             return ippResponse;
         } catch (IOException ioException) {
             throw new UncheckedIOException("Failed to get ipp response from " + path, ioException);
         }
     }
 
-    public IppResponse getIppResponse(String makeAndModel) {
-        return getIppResponse(ippMessagePath.resolve(makeAndModel + ".res"));
+    public IppResponse getIppResponse0(String makeAndModel) {
+        return readIppResponse(ippMessagePath.resolve(makeAndModel + ".res"));
     }
 
     public boolean makeAndModelExists(String makeAndModel) {
         return allMakeAndModels.contains(makeAndModel);
     }
 
+    private void rewriteAllNormalized() {
+        logger.info("Rewrite all IPP responses normalized.");
+        allIppResponses.forEach(ippResponse -> {
+            try {
+                boolean modified = new AttributesNormalizer(ippResponse).normalize();
+                if (modified) saveIppResponse(ippResponse, true);
+            } catch (IOException ioException) {
+                throw new RuntimeException(ioException);
+            }
+        });
+    }
+
     public static void main(String[] args) {
-        Logging.configure(Level.INFO);
+        Logging.configure(Level.INFO, true);
         try {
             IppMessageRepository ippMessageRepository = getInstance();
-            Stream<IppResponse> ippResponses = ippMessageRepository.findAllIppResponses();
-
-            boolean normalize = true;
-            if (normalize) {
-                logger.info("Rewrite ipp responses normalized.");
-                ippResponses.forEach(ippResponse -> {
-                    try {
-                        boolean modified = new AttributesNormalizer(ippResponse).normalize();
-                        if (modified) ippMessageRepository.saveIppResponse(ippResponse, true);
-                    } catch (IOException ioException) {
-                        throw new RuntimeException(ioException);
-                    }
-                });
-            } else {
-                ippResponses.collect(Collectors.toList());
-            }
+            boolean normalize = false;
+            if (normalize) ippMessageRepository.rewriteAllNormalized();
         } catch (Throwable throwable) {
             logger.log(Level.SEVERE, "main failed", throwable);
         }

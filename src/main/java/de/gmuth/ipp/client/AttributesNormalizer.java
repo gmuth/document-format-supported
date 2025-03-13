@@ -71,6 +71,8 @@ public class AttributesNormalizer {
         normalizeAttributeValue("printer-is-accepting-jobs", true);
         normalizeAttributeValue("queued-job-count", 0);
         normalizeAttributeValue("printer-message-from-operator", "Abandoning solar time.");
+        normalizeAttributeValues("printer-alert", "none");
+        normalizeAttributeValues("printer-alert-description", "none");
     }
 
     private void hardcodeVolatileTimeValues() {
@@ -95,6 +97,7 @@ public class AttributesNormalizer {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private void hardcodePrivateUriValues() {
         for (String name : new ArrayList<>(attributes.keySet())) {
             IppAttribute<?> attribute = attributes.get(name);
@@ -129,9 +132,8 @@ public class AttributesNormalizer {
         if (!attributes.containsKey(name)) return false;
         IppAttribute<?> attribute = attributes.get(name);
         if (attribute.getTag().isOutOfBandTag()) return false;
-        boolean attributeValueIsEmpty = attributeValueIsEmpty(attribute);
-        if (attributeValueIsEmpty) logger.fine("*** attributeValueIsEmpty *** " + attribute);
-        return !attributeValueIsEmpty;
+        if (attributeValueIsEmpty(attribute)) return false;
+        return true;
     }
 
     boolean attributeValueIsEmpty(IppAttribute<?> attribute) {
@@ -182,13 +184,11 @@ public class AttributesNormalizer {
     }
 
     public static void main(String[] args) {
-        Logging.configure(Level.INFO);
+        Logging.configure(Level.INFO, true);
         logger.setLevel(Level.FINE);
         try {
             IppMessageRepository ippMessageRepository = IppMessageRepository.getInstance();
-            //IppResponse ippResponse = ippMessageRepository.getIppResponse("HP LaserJet 100 colorMFP M175nw");
-            List<IppResponse> ippResponses = ippMessageRepository.findAllIppResponses().collect(Collectors.toList());
-            for (IppResponse ippResponse : ippResponses) {
+            for (IppResponse ippResponse : ippMessageRepository.allIppResponses) {
                 AttributesNormalizer attributesNormalizer = new AttributesNormalizer(ippResponse);
                 boolean modified = attributesNormalizer.normalize();
                 if (modified || true) ippMessageRepository.saveIppResponse(ippResponse, true);

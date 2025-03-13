@@ -13,11 +13,12 @@ public class Logging {
 
     // https://docs.oracle.com/javase/7/docs/api/java/util/logging/SimpleFormatter.html
     public static String format = "%1$tT.%1$tL %3$-30s%4$-9s%5$s%6$s%n";
+    public static String shortFormat = "%5$s%6$s%n";
     protected static StreamHandler stdoutHandler;
 
-    public static void configure(Level rootLevel) {
+    public static void configure(Level rootLevel, boolean useShortFormat) {
         Locale.setDefault(Locale.ENGLISH); // for level-name-localized: -Duser.language=en
-        System.setProperty("java.util.logging.SimpleFormatter.format", format);
+        System.setProperty("java.util.logging.SimpleFormatter.format", useShortFormat ? shortFormat : format);
         Logger rootLogger = LogManager.getLogManager().getLogger("");
         for (Handler handler : rootLogger.getHandlers()) {
             if (handler instanceof ConsoleHandler) rootLogger.removeHandler(handler);
@@ -46,16 +47,16 @@ public class Logging {
         stdoutHandler.flush();
     }
 
-    public static Logger getLogger(Class clazz) {
+    public static Logger getLogger(Class<?> clazz) {
         return Logger.getLogger(clazz.getCanonicalName());
     }
 
-    public static void setLogLevel(Class clazz, Level level) {
+    public static void setLogLevel(Class<?> clazz, Level level) {
         getLogger(clazz).setLevel(level);
     }
 
     public static void main(String[] args) {
-        Logging.configure(Level.ALL);
+        Logging.configure(Level.ALL, false);
         Logger logger = Logging.getLogger(Logging.class);
         setLogLevel(Logging.class, Level.FINEST);
         try {
