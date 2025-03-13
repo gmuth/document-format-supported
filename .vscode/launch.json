@@ -1,0 +1,46 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "AttributesNormalizer",
+            "request": "launch",
+            "mainClass": "de.gmuth.ipp.client.AttributesNormalizer",
+            "projectName": "printer-attributes"
+        },
+        {
+            "type": "java",
+            "name": "IppMessageRepository",
+            "request": "launch",
+            "mainClass": "de.gmuth.ipp.client.IppMessageRepository",
+            "projectName": "printer-attributes"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "InspectPrinters",
+            "request": "launch",
+            "mainClass": "de.gmuth.ipp.client.InspectPrinters",
+            "projectName": "printer-attributes"
+        },
+        {
+            "type": "java",
+            "name": "SavePrinterAttributes",
+            "request": "launch",
+            "mainClass": "de.gmuth.ipp.client.SavePrinterAttributes",
+            "projectName": "printer-attributes"
+        },
+        {
+            "type": "java",
+            "name": "GenerateReadme",
+            "request": "launch",
+            "mainClass": "de.gmuth.md.GenerateReadme",
+            "projectName": "printer-attributes"
+        }
+    ]
+}

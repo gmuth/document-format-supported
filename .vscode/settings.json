@@ -1,0 +1,11 @@
+{
+    "maven.view": "flat",
+    "maven.terminal.favorites": [
+        {
+            "command": "compile",
+            "debug": false
+        }
+    ],
+    "java.project.explorer.showNonJavaResources": false,
+    "java.configuration.updateBuildConfiguration": "automatic"
+}
